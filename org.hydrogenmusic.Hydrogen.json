@@ -194,6 +194,10 @@
           "type": "patch",
           "path": "patches/hydrogen-cmake.patch",
           "strip-components": 0
+        },
+        {
+          "type": "patch",
+          "path": "patches/hydrogen-appdata.patch"
         }
       ]
     }
