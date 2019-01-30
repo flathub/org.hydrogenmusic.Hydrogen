@@ -1,8 +1,8 @@
 diff --git a/linux/hydrogen.appdata.xml b/linux/hydrogen.appdata.xml
-index 9f65fb68..449d54c6 100644
+index 9f65fb68..9e61b388 100644
 --- a/linux/hydrogen.appdata.xml
 +++ b/linux/hydrogen.appdata.xml
-@@ -17,10 +17,20 @@
+@@ -17,12 +17,27 @@
   </description>
   <screenshots>
    <screenshot type="default">
@@ -24,3 +24,10 @@ index 9f65fb68..449d54c6 100644
   </screenshots>
   <url type="homepage">http://www.hydrogen-music.org/</url>
   <updatecontact>hydrogen-devel@lists.sourceforge.net</updatecontact>
+  <project_group>hydrogen</project_group>
++ <releases>
++   <release version="1.0.0-beta1" date="18-03-2018">
++     <url>http://hydrogen-music.org/release_100_beta1</url>
++   </release>
++ </releases>
+ </component>
