@@ -239,6 +239,10 @@
         {
           "type": "patch",
           "path": "patches/hydrogen-appdata.patch"
+        },
+        {
+          "type": "patch",
+          "path": "patches/hydrogen-appdata-2.patch"
         }
       ]
     }
