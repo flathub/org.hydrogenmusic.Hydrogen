@@ -1,33 +1,27 @@
-diff --git a/linux/hydrogen.appdata.xml b/linux/hydrogen.appdata.xml
-index 9f65fb68..9e61b388 100644
---- a/linux/hydrogen.appdata.xml
-+++ b/linux/hydrogen.appdata.xml
-@@ -17,12 +17,27 @@
-  </description>
-  <screenshots>
-   <screenshot type="default">
--   <image>http://www.hydrogen-music.org/hcms/sites/default/files/pictures/main-window.png</image>
-+   <image>http://hydrogen-music.org/images/screenshots/main-window.png</image>
-    <caption>The main window showing the application in action</caption>
-    <caption xml:lang="fr">La fenêtre principale montrant l'application en action</caption>
-   </screenshot>
-+  <screenshot>
-+    <image>http://hydrogen-music.org/images/screenshots/audio-filebrowser.png</image>
-+    <caption>Audio file browser with sample preview</caption>
-+    <caption xml:lang="fr">Navigateur de fichiers audio avec previsualisation de l'échantillon</caption>
-+  </screenshot>
-+  <screenshot>
-+    <image>http://hydrogen-music.org/images/screenshots/sample-editor.png</image>
-+    <caption>Sample editor</caption>
-+    <caption xml:lang="fr">Editeur d'échantillon</caption>
-+  </screenshot>
-  </screenshots>
-  <url type="homepage">http://www.hydrogen-music.org/</url>
-  <updatecontact>hydrogen-devel@lists.sourceforge.net</updatecontact>
+diff --git a/linux/org.hydrogenmusic.Hydrogen.appdata.xml b/linux/org.hydrogenmusic.Hydrogen.appdata.xml
+index 7928c640..248299a4 100644
+--- a/linux/org.hydrogenmusic.Hydrogen.appdata.xml
++++ b/linux/org.hydrogenmusic.Hydrogen.appdata.xml
+@@ -37,6 +37,22 @@
   <project_group>hydrogen</project_group>
-+ <releases>
-+   <release version="1.0.0-beta1" date="18-03-2018">
-+     <url>http://hydrogen-music.org/release_100_beta1</url>
+  <content_rating type="oars-1.0"/>
+  <releases>
++   <release version="1.0.0-beta2" date="2020-03-21">
++     <url>https://github.com/hydrogen-music/hydrogen/releases/tag/1.0.0-beta2</url>
++     <description>
++       <p>Second beta release ahead of 1.0. Changes since 0.9.7:</p>
++       <ul>
++         <li>QT5 support</li>
++         <li>New default drumkit: GMRockKit</li>
++         <li>Probability note property</li>
++         <li>Velocity automation</li>
++         <li>OSC support</li>
++         <li>Midi feedback</li>
++         <li>Menu redesign</li>
++         <li>Fullscreen mode</li>
++       </ul>
++     </description>
 +   </release>
-+ </releases>
- </component>
+    <release version="1.0.0-beta1" date="2018-03-18">
+      <url>http://hydrogen-music.org/release_100_beta1</url>
+    </release>
