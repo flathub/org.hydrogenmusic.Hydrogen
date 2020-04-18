@@ -15,6 +15,7 @@
     "--socket=pulseaudio",
     /* MIDI */
     "--device=all",
+    "--device=shm",
     /* Allow loading, saving files from anywhere (portals don’t work yet) */
     "--filesystem=host",
     /* Allow other instances to see lockfiles */
@@ -52,12 +53,11 @@
         }
       ]
     },
-    "shared-modules/python2.7/python-2.7.json",
     {
       "name": "jack2",
       "buildsystem": "simple",
       "build-commands": [
-        "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --freebob=no --classic",
+        "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --classic",
         "./waf build -j $FLATPAK_BUILDER_N_JOBS",
         "./waf install"
       ],
@@ -70,8 +70,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/jackaudio/jack2/releases/download/v1.9.12/jack2-1.9.12.tar.gz",
-          "sha256": "deefe2f936dc32f59ad3cef7e37276c2035ef8a024ca92118f35c9a292272e33"
+          "url": "https://github.com/jackaudio/jack2/releases/download/v1.9.14/v1.9.14.tar.gz",
+          "sha256": "a20a32366780c0061fd58fbb5f09e514ea9b7ce6e53b080a44b11a558a83217c"
         }
       ]
     },
