@@ -289,7 +289,7 @@
         {
           "type": "archive",
           "url": "https://github.com/hydrogen-music/hydrogen/archive/1.0.0-beta2.tar.gz",
-          "sha256": "943cafb24af6dee984c25267801121f4814311c2caee02a8c9a6d1c1e2b39015"
+          "sha256": "1f817eaa62984c1df64b418d831b52cb9e437b609735fc009df06a45f1517d7b"
         },
         {
           "type": "patch",
