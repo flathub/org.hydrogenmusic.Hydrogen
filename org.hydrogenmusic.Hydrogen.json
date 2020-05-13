@@ -20,11 +20,21 @@
     "--filesystem=host",
     /* Allow other instances to see lockfiles */
     "--env=TMPDIR=/var/tmp",
-    "--env=LADSPA_PATH=/app/lib/ladspa",
+    "--env=LADSPA_PATH=/app/extensions/LadspaPlugins/ladspa:/app/lib/ladspa",
     /* On SuSE it seems to be necessary for sound to work */
     "--env=ALSA_CONFIG_PATH=",
     "--env=QT_AUTO_SCREEN_SCALE_FACTOR=1"
   ],
+  "add-extensions": {
+    "org.freedesktop.LinuxAudio.LadspaPlugins": {
+      "directory": "extensions/LadspaPlugins",
+      "version": "19.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "ladspa",
+      "subdirectories": true,
+      "no-autodownload": true
+    }
+  },
   "cleanup": [
     "/include",
     "/man",
@@ -33,89 +43,9 @@
     "*.la"
   ],
   "modules": [
-    {
-      "name": "ladspa",
-      "no-autogen": true,
-      "subdir": "src",
-      "make-install-args": [
-        "INSTALL_PLUGINS_DIR=/app/lib/ladspa",
-        "INSTALL_INCLUDE_DIR=/app/include",
-        "INSTALL_BINARY_DIR=/app/bin"
-      ],
-      "cleanup": [
-        "/bin"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "http://www.ladspa.org/download/ladspa_sdk_1.15.tgz",
-          "sha256": "4229959b09d20c88c8c86f4aa76427843011705df22d9c28b38359fd1829fded"
-        }
-      ]
-    },
-    {
-      "name": "jack2",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./waf configure --prefix=/app --htmldir=/app/share/doc/jack/ --classic",
-        "./waf build -j $FLATPAK_BUILDER_N_JOBS",
-        "./waf install"
-      ],
-      "cleanup": [
-        "/bin",
-        "/share",
-        "/lib/jack",
-        "/lib/libjackserver.so*"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/jackaudio/jack2/releases/download/v1.9.14/v1.9.14.tar.gz",
-          "sha256": "a20a32366780c0061fd58fbb5f09e514ea9b7ce6e53b080a44b11a558a83217c"
-        }
-      ]
-    },
-    {
-      "name": "lash",
-      "rm-configure": true,
-      "config-opts": [
-        "--disable-static",
-        "--disable-serv-inst",
-        "CFLAGS=-D_GNU_SOURCE"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://download.savannah.gnu.org/releases/lash/lash-0.5.4.tar.gz",
-          "sha256": "105a7da84415c4725c6bcad28e70f23aeb4534f94fc80ca262b6a2cef2226c16"
-        },
-        {
-          "type": "patch",
-          "strip-components": 0,
-          "path": "patches/lash-0.5.3-no-static-lib.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/lash-gcc47.patch"
-        },
-        {
-          "type": "patch",
-          "path": "patches/lash-linking.patch"
-        },
-        {
-          "type": "patch",
-          "strip-components": 0,
-          "path": "patches/lash-configure.patch"
-        },
-        {
-          "type": "script",
-          "commands": [
-            "autoreconf -fiv"
-          ],
-          "dest-filename": "autogen.sh"
-        }
-      ]
-    },
+    "shared-modules/linux-audio/lrdf.json",
+    "shared-modules/linux-audio/jack2.json",
+    "shared-modules/linux-audio/lash.json",
     {
       "name": "portaudio",
       "config-opts": [
@@ -161,16 +91,7 @@
         "*.la"
       ]
     },
-    {
-      "name": "liblo",
-      "sources": [
-        {
-          "type": "archive",
-          "url": "http://download.sf.net/sourceforge/liblo/liblo-0.29.tar.gz",
-          "sha256": "ace1b4e234091425c150261d1ca7070cece48ee3c228a5612d048116d864c06a"
-        }
-      ]
-    },
+    "shared-modules/linux-audio/liblo.json",
     {
       "name": "vamp-plugin-sdk",
       "sources": [
@@ -211,66 +132,6 @@
       ]
     },
     {
-      "name": "lrdf",
-      "rm-configure": true,
-      "modules": [
-        {
-          "name": "libxml2",
-          "config-opts": [
-            "--without-python",
-            "--disable-static"
-          ],
-          "cleanup": [
-            "/bin",
-            "/share/doc",
-            "/share/gtk-doc",
-            "/share/aclocal",
-            "/lib/cmake",
-            "/lib/xml2Conf.sh"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "https://github.com/GNOME/libxml2/archive/v2.9.8.tar.gz",
-              "sha256": "ff879b0d9142564bfe63df9753df936f05150afdd7bae07261f12d4dad33ba4a"
-            }
-          ]
-        },
-        {
-          "name": "raptor2",
-          "config-opts": [
-            "--disable-static"
-          ],
-          "cleanup": [
-            "/bin",
-            "/share/gtk-doc"
-          ],
-          "sources": [
-            {
-              "type": "archive",
-              "url": "http://download.librdf.org/source/raptor2-2.0.15.tar.gz",
-              "sha256": "ada7f0ba54787b33485d090d3d2680533520cd4426d2f7fb4782dd4a6a1480ed"
-            }
-          ]
-        }
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/swh/LRDF/tarball/0.5.0",
-          "dest-filename": "swh-LRDF-0.5.0-0-g7ebc032.tar.gz",
-          "sha256": "013002b91ef209827fe99552b8c7f0b569cddb3d6f1439bedbd8bafe1956a93c"
-        },
-        {
-          "type": "script",
-          "commands": [
-            "autoreconf -fiv"
-          ],
-          "dest-filename": "autogen.sh"
-        }
-      ]
-    },
-    {
       "name": "hydrogen",
       "buildsystem": "cmake-ninja",
       "config-opts": [
@@ -282,9 +143,12 @@
       ],
       "build-options": {
         "env": [
-          "LADSPA_PATH=/app/lib/ladspa"
+          "LADSPA_PATH=/app/extensions/ladspa:/app/lib/ladspa"
         ]
       },
+      "post-install": [
+        "install -d /app/extensions/LadspaPlugins"
+      ],
       "sources": [
         {
           "type": "archive",
