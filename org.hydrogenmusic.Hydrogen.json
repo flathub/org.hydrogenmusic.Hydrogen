@@ -96,17 +96,18 @@
       "name": "vamp-plugin-sdk",
       "sources": [
         {
-          "type": "git",
-          "url": "https://github.com/c4dm/vamp-plugin-sdk",
-          "tag": "vamp-plugin-sdk-v2.7.1",
-          "commit": "10be490c9902d874e9d772d94bf91448303d9b06"
+          "type": "archive",
+          "url": "https://code.soundsoftware.ac.uk/attachments/download/2450/vamp-plugin-sdk-2.8.0.tar.gz",
+          "sha256": "dcc96ae894795822398789f251c2c7effa602fc60e9dd6c7a5c5d2e7a513526c"
         }
       ],
       "post-install": [
         "install -Dm644 -t /app/share/licenses/vamp-plugin-sdk COPYING"
       ],
       "cleanup": [
-        "/bin"
+        "/bin",
+        "/include",
+        "/lib/pkgconfig"
       ]
     },
     {
