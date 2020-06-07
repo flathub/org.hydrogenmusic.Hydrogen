@@ -18,7 +18,7 @@ index 248299a4..3915402f 100644
 +     <description>
 +      <ul>
 +        <li>Several fixes to the Jack transport (missed/double beats at the begin of a pattern).</li>
-+        <li>Fixed audio artifaces when using the ALSA driver.</li>
++        <li>Fixed audio artifacts when using the ALSA driver.</li>
 +        <li>Fixed tempo problems/distorting when exporting a song.</li>
 +        <li>Playback track now scales correctly.</li>
 +      </ul>
