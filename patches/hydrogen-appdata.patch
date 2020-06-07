@@ -1,27 +1,30 @@
+commit db0ce91c8c6ce34b3d31976a6be69afa5b4000b6
+Author: Sebastian Moors <mauser@smoors.de>
+Date:   Sun Jun 7 20:24:43 2020 +0200
+
+    Updated appdata.xml
+
 diff --git a/linux/org.hydrogenmusic.Hydrogen.appdata.xml b/linux/org.hydrogenmusic.Hydrogen.appdata.xml
-index 7928c640..248299a4 100644
+index 248299a4..3915402f 100644
 --- a/linux/org.hydrogenmusic.Hydrogen.appdata.xml
 +++ b/linux/org.hydrogenmusic.Hydrogen.appdata.xml
-@@ -37,6 +37,22 @@
+@@ -36,7 +36,18 @@
+  <update_contact>hydrogen-devel@lists.sourceforge.net</update_contact>
   <project_group>hydrogen</project_group>
   <content_rating type="oars-1.0"/>
-  <releases>
-+   <release version="1.0.0-beta2" date="2020-03-21">
-+     <url>https://github.com/hydrogen-music/hydrogen/releases/tag/1.0.0-beta2</url>
+- <releases>
++   <releases>
++    <release version="1.0.0-rc1" date="2020-06-07">
 +     <description>
-+       <p>Second beta release ahead of 1.0. Changes since 0.9.7:</p>
-+       <ul>
-+         <li>QT5 support</li>
-+         <li>New default drumkit: GMRockKit</li>
-+         <li>Probability note property</li>
-+         <li>Velocity automation</li>
-+         <li>OSC support</li>
-+         <li>Midi feedback</li>
-+         <li>Menu redesign</li>
-+         <li>Fullscreen mode</li>
-+       </ul>
++      <ul>
++        <li>Several fixes to the Jack transport (missed/double beats at the begin of a pattern).</li>
++        <li>Fixed audio artifaces when using the ALSA driver.</li>
++        <li>Fixed tempo problems/distorting when exporting a song.</li>
++        <li>Playback track now scales correctly.</li>
++      </ul>
 +     </description>
++     <url>https://github.com/hydrogen-music/hydrogen/releases/tag/1.0.0-rc1</url>
 +   </release>
-    <release version="1.0.0-beta1" date="2018-03-18">
-      <url>http://hydrogen-music.org/release_100_beta1</url>
-    </release>
+    <release version="1.0.0-beta2" date="2020-03-21">
+      <url>https://github.com/hydrogen-music/hydrogen/releases/tag/1.0.0-beta2</url>
+      <description>
