@@ -19,12 +19,20 @@
     "--filesystem=host",
     /* Allow other instances to see lockfiles */
     "--env=TMPDIR=/var/tmp",
-    "--env=LADSPA_PATH=/app/extensions/LadspaPlugins/ladspa:/app/lib/ladspa",
+    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/extensions/LadspaPlugins/ladspa:/app/lib/ladspa",
     /* On SuSE it seems to be necessary for sound to work */
     "--env=ALSA_CONFIG_PATH=",
     "--env=QT_AUTO_SCREEN_SCALE_FACTOR=1"
   ],
   "add-extensions": {
+    "org.freedesktop.LinuxAudio.Plugins": {
+      "directory": "extensions/Plugins",
+      "version": "19.08",
+      "add-ld-path": "lib",
+      "merge-dirs": "ladspa",
+      "subdirectories": true,
+      "no-autodownload": true
+    },
     "org.freedesktop.LinuxAudio.LadspaPlugins": {
       "directory": "extensions/LadspaPlugins",
       "version": "19.08",
@@ -147,6 +155,7 @@
         ]
       },
       "post-install": [
+        "install -d /app/extensions/Plugins",
         "install -d /app/extensions/LadspaPlugins"
       ],
       "sources": [
