@@ -1,7 +1,7 @@
 {
   "app-id": "org.hydrogenmusic.Hydrogen",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.14",
+  "runtime-version": "5.15",
   "sdk": "org.kde.Sdk",
   "command": "hydrogen",
   "finish-args": [
@@ -15,11 +15,14 @@
     "--socket=pulseaudio",
     /* MIDI */
     "--device=all",
+    /* For pipewire */
+    "--filesystem=xdg-run/pipewire-0",
+    "--socket=system-bus",
     /* Allow loading, saving files from anywhere (portals don’t work yet) */
     "--filesystem=host",
     /* Allow other instances to see lockfiles */
     "--env=TMPDIR=/var/tmp",
-    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/extensions/LadspaPlugins/ladspa:/app/lib/ladspa",
+    "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa",
     /* On SuSE it seems to be necessary for sound to work */
     "--env=ALSA_CONFIG_PATH=",
     "--env=QT_AUTO_SCREEN_SCALE_FACTOR=1"
@@ -27,15 +30,7 @@
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
-      "version": "19.08",
-      "add-ld-path": "lib",
-      "merge-dirs": "ladspa",
-      "subdirectories": true,
-      "no-autodownload": true
-    },
-    "org.freedesktop.LinuxAudio.LadspaPlugins": {
-      "directory": "extensions/LadspaPlugins",
-      "version": "19.08",
+      "version": "20.08",
       "add-ld-path": "lib",
       "merge-dirs": "ladspa",
       "subdirectories": true,
@@ -47,6 +42,8 @@
     "/man",
     "/share/man",
     "/lib/pkgconfig",
+    "/lib/jack",
+    "/lib/libjack*",
     "*.la"
   ],
   "modules": [
@@ -155,8 +152,7 @@
         ]
       },
       "post-install": [
-        "install -d /app/extensions/Plugins",
-        "install -d /app/extensions/LadspaPlugins"
+        "install -d /app/extensions/Plugins"
       ],
       "sources": [
         {
