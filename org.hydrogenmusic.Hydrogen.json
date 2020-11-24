@@ -142,7 +142,7 @@
       "buildsystem": "cmake-ninja",
       "config-opts": [
         "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-        "-DWANT_JACK=0",
+        "-DWANT_JACK=1",
         "-DWANT_LASH=1",
         "-DWANT_PORTAUDIO=1",
         "-DWANT_PORTMIDI=1"
