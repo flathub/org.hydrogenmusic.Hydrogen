@@ -4,6 +4,8 @@
   "runtime-version": "5.15",
   "sdk": "org.kde.Sdk",
   "command": "hydrogen",
+  "branch": "beta",
+  "desktop-file-name-prefix": "(beta) ",
   "finish-args": [
     /* X11 + XShm access */
     "--share=ipc",
@@ -43,8 +45,6 @@
     "/man",
     "/share/man",
     "/lib/pkgconfig",
-    "/lib/jack",
-    "/lib/libjack*",
     "*.la"
   ],
   "modules": [
@@ -160,8 +160,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/archive/1.0.2.tar.gz",
-          "sha256": "de1ce64da8ae7a84d7fbd789e84010d6a837378bc9811acb282c30b9ee8042f5"
+          "url": "https://github.com/hydrogen-music/hydrogen/archive/1.1.0-beta1.tar.gz",
+          "sha256": "8de09e196f14c49ce516fc35ce9c9c7d3081e2164028717ce1a6ebf521ca819e"
         },
         {
           "type": "patch",
