@@ -53,15 +53,13 @@
     "shared-modules/linux-audio/lash.json",
     {
       "name": "portaudio",
-      "config-opts": [
-        "--disable-static",
-        "--without-oss"
-      ],
+      "buildsystem": "cmake-ninja",
       "sources": [
         {
-          "type": "archive",
-          "url": "http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz",
-          "sha256": "f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513"
+          "type": "git",
+          "url": "https://github.com/PortAudio/portaudio.git",
+          "tag": "v19.7.0",
+          "commit": "147dd722548358763a8b649b3e4b41dfffbcfbb6"
         }
       ]
     },
@@ -144,7 +142,7 @@
       "buildsystem": "cmake-ninja",
       "config-opts": [
         "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-        "-DWANT_JACK=1",
+        "-DWANT_JACK=0",
         "-DWANT_LASH=1",
         "-DWANT_PORTAUDIO=1",
         "-DWANT_PORTMIDI=1"
@@ -160,8 +158,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/archive/1.1.0-beta1.tar.gz",
-          "sha256": "8de09e196f14c49ce516fc35ce9c9c7d3081e2164028717ce1a6ebf521ca819e"
+          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.0/hydrogen-1.1.0.tar.gz",
+          "sha256": "4f3dda502cd0ccc2e0b5c6e2f8d2edad305d3e9c400cfe2e46053f4e623f45de"
         },
         {
           "type": "patch",
