@@ -158,8 +158,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.0/hydrogen-1.1.0.tar.gz",
-          "sha256": "4f3dda502cd0ccc2e0b5c6e2f8d2edad305d3e9c400cfe2e46053f4e623f45de"
+          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.1/hydrogen-1.1.1.tar.gz",
+          "sha256": "692ef6acd94102ec9c576cf28ce8572431f669f0516c7465b6b79fc3e15e0180"
         },
         {
           "type": "patch",
