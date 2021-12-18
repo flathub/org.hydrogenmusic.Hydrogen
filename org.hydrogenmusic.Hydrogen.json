@@ -1,7 +1,7 @@
 {
   "app-id": "org.hydrogenmusic.Hydrogen",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.15",
+  "runtime-version": "5.15-21.08",
   "sdk": "org.kde.Sdk",
   "command": "hydrogen",
   "finish-args": [
@@ -31,7 +31,7 @@
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
-      "version": "20.08",
+      "version": "21.08",
       "add-ld-path": "lib",
       "merge-dirs": "ladspa",
       "subdirectories": true,
@@ -43,8 +43,6 @@
     "/man",
     "/share/man",
     "/lib/pkgconfig",
-    "/lib/jack",
-    "/lib/libjack*",
     "*.la"
   ],
   "modules": [
@@ -53,15 +51,13 @@
     "shared-modules/linux-audio/lash.json",
     {
       "name": "portaudio",
-      "config-opts": [
-        "--disable-static",
-        "--without-oss"
-      ],
+      "buildsystem": "cmake-ninja",
       "sources": [
         {
-          "type": "archive",
-          "url": "http://www.portaudio.com/archives/pa_stable_v190600_20161030.tgz",
-          "sha256": "f5a21d7dcd6ee84397446fa1fa1a0675bb2e8a4a6dceb4305a8404698d8d1513"
+          "type": "git",
+          "url": "https://github.com/PortAudio/portaudio.git",
+          "tag": "v19.7.0",
+          "commit": "147dd722548358763a8b649b3e4b41dfffbcfbb6"
         }
       ]
     },
@@ -102,7 +98,7 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://code.soundsoftware.ac.uk/attachments/download/2450/vamp-plugin-sdk-2.8.0.tar.gz",
+          "url": "https://archive.org/download/vamp-plugin-sdk-2.8.0-source/vamp-plugin-sdk-2.8.0.tar.gz",
           "sha256": "dcc96ae894795822398789f251c2c7effa602fc60e9dd6c7a5c5d2e7a513526c"
         }
       ],
@@ -144,7 +140,7 @@
       "buildsystem": "cmake-ninja",
       "config-opts": [
         "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
-        "-DWANT_JACK=1",
+        "-DWANT_JACK=0",
         "-DWANT_LASH=1",
         "-DWANT_PORTAUDIO=1",
         "-DWANT_PORTMIDI=1"
@@ -160,8 +156,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/archive/1.0.2.tar.gz",
-          "sha256": "de1ce64da8ae7a84d7fbd789e84010d6a837378bc9811acb282c30b9ee8042f5"
+          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.1/hydrogen-1.1.1.tar.gz",
+          "sha256": "692ef6acd94102ec9c576cf28ce8572431f669f0516c7465b6b79fc3e15e0180"
         },
         {
           "type": "patch",
