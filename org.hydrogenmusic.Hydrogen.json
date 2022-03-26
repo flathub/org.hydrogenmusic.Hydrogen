@@ -95,6 +95,7 @@
     "shared-modules/linux-audio/liblo.json",
     {
       "name": "vamp-plugin-sdk",
+      "no-parallel-make": true,
       "sources": [
         {
           "type": "archive",
