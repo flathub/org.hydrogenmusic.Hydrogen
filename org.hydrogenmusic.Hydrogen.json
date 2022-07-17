@@ -18,7 +18,6 @@
     "--device=all",
     /* For pipewire */
     "--filesystem=xdg-run/pipewire-0",
-    "--system-talk-name=org.freedesktop.RealtimeKit1",
     /* Allow loading, saving files from anywhere (portals don’t work yet) */
     "--filesystem=home",
     /* Allow other instances to see lockfiles */
