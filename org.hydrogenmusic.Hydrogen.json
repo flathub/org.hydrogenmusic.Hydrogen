@@ -3,6 +3,7 @@
   "runtime": "org.kde.Platform",
   "runtime-version": "5.15-22.08",
   "sdk": "org.kde.Sdk",
+  "desktop-file-name-prefix": "(Beta) ",
   "command": "hydrogen",
   "finish-args": [
     /* X11 + XShm access */
