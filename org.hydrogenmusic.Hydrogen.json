@@ -1,11 +1,10 @@
 {
   "app-id": "org.hydrogenmusic.Hydrogen",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-21.08",
+  "runtime-version": "5.15-22.08",
   "sdk": "org.kde.Sdk",
+  "desktop-file-name-prefix": "(Beta) ",
   "command": "hydrogen",
-  "branch": "beta",
-  "desktop-file-name-prefix": "(beta) ",
   "finish-args": [
     /* X11 + XShm access */
     "--share=ipc",
@@ -20,7 +19,6 @@
     "--device=all",
     /* For pipewire */
     "--filesystem=xdg-run/pipewire-0",
-    "--system-talk-name=org.freedesktop.RealtimeKit1",
     /* Allow loading, saving files from anywhere (portals don’t work yet) */
     "--filesystem=home",
     /* Allow other instances to see lockfiles */
@@ -33,7 +31,7 @@
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
-      "version": "21.08",
+      "version": "22.08",
       "add-ld-path": "lib",
       "merge-dirs": "ladspa",
       "subdirectories": true,
@@ -49,11 +47,29 @@
   ],
   "modules": [
     "shared-modules/linux-audio/lrdf.json",
-    "shared-modules/linux-audio/jack2.json",
     "shared-modules/linux-audio/lash.json",
+    {
+      "name": "sndfile",
+      "cleanup": [
+        "/bin",
+        "/include",
+        "/share/doc"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/libsndfile/libsndfile/releases/download/1.1.0/libsndfile-1.1.0.tar.xz",
+          "sha256": "0f98e101c0f7c850a71225fb5feaf33b106227b3d331333ddc9bacee190bcf41"
+        }
+      ]
+    },
     {
       "name": "portaudio",
       "buildsystem": "cmake-ninja",
+      "cleanup": [
+        "/lib/cmake",
+        "/share/doc"
+      ],
       "sources": [
         {
           "type": "git",
@@ -97,6 +113,7 @@
     "shared-modules/linux-audio/liblo.json",
     {
       "name": "vamp-plugin-sdk",
+      "no-parallel-make": true,
       "sources": [
         {
           "type": "archive",
@@ -158,8 +175,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.1/hydrogen-1.1.1.tar.gz",
-          "sha256": "692ef6acd94102ec9c576cf28ce8572431f669f0516c7465b6b79fc3e15e0180"
+          "url": "https://github.com/hydrogen-music/hydrogen/archive/refs/tags/1.2.0-beta1.tar.gz",
+          "sha256": "4c4f2e496cc36b37866828385e2f3716d96ea5240f5ace9ecfb5a9b6b08d070e"
         },
         {
           "type": "patch",
