@@ -10,8 +10,6 @@
     "--share=ipc",
     "--share=network",
     "--socket=x11",
-    /* Wayland */
-    "--socket=wayland",
     "--env=QT_QPA_PLATFORM=xcb",
     /* Note playback */
     "--socket=pulseaudio",
