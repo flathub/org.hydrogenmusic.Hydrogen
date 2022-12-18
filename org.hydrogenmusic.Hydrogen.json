@@ -157,7 +157,7 @@
       "name": "hydrogen",
       "buildsystem": "cmake-ninja",
       "config-opts": [
-        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DWANT_DEBUG=OFF",
         "-DWANT_JACK=0",
         "-DWANT_LASH=1",
         "-DWANT_PORTAUDIO=1",
