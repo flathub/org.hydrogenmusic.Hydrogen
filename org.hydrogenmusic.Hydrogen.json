@@ -156,7 +156,7 @@
       "name": "hydrogen",
       "buildsystem": "cmake-ninja",
       "config-opts": [
-        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DWANT_DEBUG=OFF",
         "-DWANT_JACK=0",
         "-DWANT_LASH=1",
         "-DWANT_PORTAUDIO=1",
@@ -174,7 +174,7 @@
         {
           "type": "archive",
           "url": "https://github.com/hydrogen-music/hydrogen/archive/refs/tags/1.2.0-beta1.tar.gz",
-          "sha256": "4c4f2e496cc36b37866828385e2f3716d96ea5240f5ace9ecfb5a9b6b08d070e"
+          "sha256": "389781431627a3f19856a9690a2e6cdb2337aaa3c744a879d7cb33e6fbc6d91d"
         },
         {
           "type": "patch",
