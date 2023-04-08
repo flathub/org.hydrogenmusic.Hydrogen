@@ -158,10 +158,10 @@
       "buildsystem": "cmake-ninja",
       "config-opts": [
         "-DWANT_DEBUG=OFF",
-        "-DWANT_JACK=0",
-        "-DWANT_LASH=1",
-        "-DWANT_PORTAUDIO=1",
-        "-DWANT_PORTMIDI=1"
+        "-DWANT_JACK=ON",
+        "-DWANT_LASH=ON",
+        "-DWANT_PORTAUDIO=ON",
+        "-DWANT_PORTMIDI=ON"
       ],
       "build-options": {
         "env": [
@@ -173,9 +173,9 @@
       ],
       "sources": [
         {
-          "type": "archive",
-          "url": "https://github.com/hydrogen-music/hydrogen/releases/download/1.1.1/hydrogen-1.1.1.tar.gz",
-          "sha256": "692ef6acd94102ec9c576cf28ce8572431f669f0516c7465b6b79fc3e15e0180"
+          "type": "git",
+          "url": "https://github.com/hydrogen-music/hydrogen.git",
+          "tag": "1.1.1"
         },
         {
           "type": "patch",
