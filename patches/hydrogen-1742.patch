@@ -1,0 +1,62 @@
+diff --git a/src/core/AudioEngine/AudioEngine.cpp b/src/core/AudioEngine/AudioEngine.cpp
+index 989930bc3..ea9e7d27b 100644
+--- a/src/core/AudioEngine/AudioEngine.cpp
++++ b/src/core/AudioEngine/AudioEngine.cpp
+@@ -470,15 +470,17 @@ void AudioEngine::updateTransportPosition( double fTick, long long nFrame, std::
+ 
+ 	updateBpmAndTickSize( pPos );
+ 
++
+ 	// Beat - Bar (- Tick) information is a coarse grained position
+ 	// information and might not change on small position increments.
+ 	bool bBBTChanged = false;
+-	if ( pPos->getColumn() + 1 != pPos->getBar() ) {
+-		pPos->setBar( pPos->getColumn() + 1 );
++	const int nBar = std::max( pPos->getColumn(), 0 ) + 1;
++	if ( nBar != pPos->getBar() ) {
++		pPos->setBar( nBar );
+ 		bBBTChanged = true;
+ 	}
+ 
+-	int nBeat = static_cast<int>(
++	const int nBeat = static_cast<int>(
+ 		std::floor(static_cast<float>(pPos->getPatternTickPosition()) /  48 )) + 1;
+ 	if ( pPos->getBeat() != nBeat ) {
+ 		pPos->setBeat( nBeat );
+diff --git a/src/gui/src/Director.cpp b/src/gui/src/Director.cpp
+index dcbb8a460..be84b65df 100644
+--- a/src/gui/src/Director.cpp
++++ b/src/gui/src/Director.cpp
+@@ -110,11 +110,6 @@ void Director::closeEvent( QCloseEvent* ev )
+ }
+ 
+ void Director::tempoChangedEvent( int ) {
+-	auto pPos = Hydrogen::get_instance()->getAudioEngine()->getTransportPosition();
+-	if ( m_fBpm != pPos->getBpm() ){
+-		m_fBpm = pPos->getBpm();
+-	}
+-
+ 	bbtChangedEvent();
+ }
+ 
+@@ -197,7 +192,7 @@ void Director::bbtChangedEvent()
+ 	auto pPos = Hydrogen::get_instance()->getAudioEngine()->getTransportPosition();
+ 
+ 	// 1000 ms / bpm / 60s
+-	m_pTimer->start( static_cast<int>( 1000 / ( m_fBpm / 60 )) / 2 );
++	m_pTimer->start( static_cast<int>( 1000 / ( pPos->getBpm() / 60 )) / 2 );
+ 	m_nFlashingArea = width() * 5/100;
+ 
+ 	m_nBar = pPos->getBar();
+diff --git a/src/gui/src/Director.h b/src/gui/src/Director.h
+index 614b60acb..12bc2ba8c 100644
+--- a/src/gui/src/Director.h
++++ b/src/gui/src/Director.h
+@@ -79,7 +79,6 @@ private slots:
+ 	QColor				m_Color;
+ 	QPalette			m_BlinkerPalette;
+ 	int					m_nBeat;
+-	float				m_fBpm;
+ 	int					m_nBar;
+ 	int					m_nFlashingArea;
+ 	QString				m_sTagCurrent;
