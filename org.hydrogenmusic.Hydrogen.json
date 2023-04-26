@@ -179,7 +179,10 @@
         },
         {
           "type": "patch",
-          "path": "patches/hydrogen-appdata.patch"
+            "paths": [
+                "patches/hydrogen-appdata.patch",
+                "patches/hydrogen-1742.patch"
+            ]
         }
       ]
     }
