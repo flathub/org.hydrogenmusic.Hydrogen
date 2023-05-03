@@ -9,8 +9,6 @@
     "--share=ipc",
     "--share=network",
     "--socket=x11",
-    /* Wayland */
-    "--socket=wayland",
     "--env=QT_QPA_PLATFORM=xcb",
     /* Note playback */
     "--socket=pulseaudio",
@@ -175,11 +173,15 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.1.1"
+          "tag": "1.2.0",
+          "commit": "c92f20469d53154e31b259c77676a31311a9be07"
         },
         {
           "type": "patch",
-          "path": "patches/hydrogen-appdata.patch"
+            "paths": [
+                "patches/hydrogen-appdata.patch",
+                "patches/hydrogen-1742.patch"
+            ]
         }
       ]
     }
