@@ -79,32 +79,20 @@
     {
       "name": "portmidi",
       "buildsystem": "cmake-ninja",
-      "config-opts": [
-        "-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/app/lib",
-        "-DCMAKE_ARCHIVE_OUTPUT_DIRECTORY=/app/lib",
-        "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/app/bin"
-      ],
-      "post-install": [
-      /* MuseScore looks for this name for some reason */
-        "ln -s libportmidi.so /app/lib/libporttime.so"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://sourceforge.net/projects/portmedia/files/portmidi/217/portmidi-src-217.zip",
-          "sha256": "08e9a892bd80bdb1115213fb72dc29a7bf2ff108b378180586aa65f3cfd42e0f"
-        },
-        {
-          "type": "patch",
-          "path": "patches/portmidi-no-java.patch"
-        }
-      ],
       "cleanup": [
-        "/bin",
+        "/lib/cmake",
         "/lib/pkgconfig",
         "/include",
         "*.a",
         "*.la"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/PortMidi/portmidi.git",
+          "tag": "v2.0.4",
+          "commit": "b808babecdc5d05205467dab5c1006c5ac0fdfd4"
+        }
       ]
     },
     "shared-modules/linux-audio/liblo.json",
@@ -173,14 +161,13 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.2.0",
-          "commit": "c92f20469d53154e31b259c77676a31311a9be07"
+          "tag": "1.2.1",
+          "commit": "3dd2b451e6150338ef4d8836d826294ac8e78ad9"
         },
         {
           "type": "patch",
             "paths": [
-                "patches/hydrogen-appdata.patch",
-                "patches/hydrogen-1742.patch"
+                "patches/hydrogen-appdata.patch"
             ]
         }
       ]
