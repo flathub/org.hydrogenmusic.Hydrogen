@@ -144,10 +144,17 @@
       "buildsystem": "cmake-ninja",
       "config-opts": [
         "-DWANT_DEBUG=OFF",
+        "-DWANT_ALSA=ON",
+        "-DWANT_PULSEAUDIO=ON",
         "-DWANT_JACK=ON",
+        "-DWANT_LADSPA=ON",
+        "-DWANT_LRDF=ON",
+        "-DWANT_OSC=ON",
         "-DWANT_LASH=ON",
         "-DWANT_PORTAUDIO=ON",
-        "-DWANT_PORTMIDI=ON"
+        "-DWANT_PORTMIDI=ON",
+        "-DWANT_RUBBERBAND=ON",
+        "-DWANT_LIBARCHIVE=ON"
       ],
       "build-options": {
         "env": [
