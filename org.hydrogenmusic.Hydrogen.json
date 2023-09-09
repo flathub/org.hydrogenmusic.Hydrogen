@@ -154,7 +154,9 @@
         "-DWANT_PORTAUDIO=ON",
         "-DWANT_PORTMIDI=ON",
         "-DWANT_RUBBERBAND=ON",
-        "-DWANT_LIBARCHIVE=ON"
+        "-DWANT_LIBARCHIVE=ON",
+	"-DWANT_DYNAMIC_JACK_CHECK=ON",
+	"-DWANT_PIPEWIRE_JACK_ONLY_CHECK=ON"
       ],
       "build-options": {
         "env": [
@@ -168,8 +170,7 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.2.2",
-          "commit": "f48a63d9c5294297275f362a2cc04ac9ba1cb1c6"
+          "commit": "4489ec29020365aba7911a60b8b1670029e802b9"
         }
       ]
     }
