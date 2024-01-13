@@ -168,8 +168,8 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.2.2",
-          "commit": "f48a63d9c5294297275f362a2cc04ac9ba1cb1c6"
+          "tag": "1.2.3",
+          "commit": "2b4b191f41d960ffacc451580ecce2b123a63623"
         }
       ]
     }
