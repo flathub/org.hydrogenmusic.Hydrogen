@@ -1,34 +1,27 @@
 {
   "app-id": "org.hydrogenmusic.Hydrogen",
   "runtime": "org.kde.Platform",
-  "runtime-version": "5.15-23.08",
+  "runtime-version": "5.15-24.08",
   "sdk": "org.kde.Sdk",
   "command": "hydrogen",
   "finish-args": [
-    /* X11 + XShm access */
     "--share=ipc",
     "--share=network",
     "--socket=x11",
+    "--device=dri",
     "--env=QT_QPA_PLATFORM=xcb",
-    /* Note playback */
     "--socket=pulseaudio",
-    /* MIDI */
-    "--device=all",
-    /* For pipewire */
     "--filesystem=xdg-run/pipewire-0",
-    /* Allow loading, saving files from anywhere (portals don’t work yet) */
     "--filesystem=home",
-    /* Allow other instances to see lockfiles */
     "--env=TMPDIR=/var/tmp",
     "--env=LADSPA_PATH=/app/extensions/Plugins/ladspa:/app/lib/ladspa",
-    /* On SuSE it seems to be necessary for sound to work */
     "--env=ALSA_CONFIG_PATH=",
     "--env=QT_AUTO_SCREEN_SCALE_FACTOR=1"
   ],
   "add-extensions": {
     "org.freedesktop.LinuxAudio.Plugins": {
       "directory": "extensions/Plugins",
-      "version": "23.08",
+      "version": "24.08",
       "add-ld-path": "lib",
       "merge-dirs": "ladspa",
       "subdirectories": true,
@@ -170,6 +163,10 @@
           "url": "https://github.com/hydrogen-music/hydrogen.git",
           "tag": "1.2.3",
           "commit": "2b4b191f41d960ffacc451580ecce2b123a63623"
+        },
+        {
+          "type": "patch",
+          "path": "patches/hydrogen-appstream.patch"
         }
       ]
     }
