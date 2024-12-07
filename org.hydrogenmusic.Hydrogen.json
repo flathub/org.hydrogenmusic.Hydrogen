@@ -161,12 +161,15 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.2.3",
-          "commit": "2b4b191f41d960ffacc451580ecce2b123a63623"
+          "tag": "1.2.4",
+          "commit": "98b3d540baa83f8187c4cd825a1f2e40b74dfa92"
         },
         {
           "type": "patch",
-          "path": "patches/hydrogen-appstream.patch"
+          "paths": [
+            "patches/hydrogen-appstream.patch",
+            "patches/hydrogen-build.patch"
+          ]
         }
       ]
     }
