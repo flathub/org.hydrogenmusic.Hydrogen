@@ -39,21 +39,6 @@
     "shared-modules/linux-audio/lrdf.json",
     "shared-modules/linux-audio/lash.json",
     {
-      "name": "sndfile",
-      "cleanup": [
-        "/bin",
-        "/include",
-        "/share/doc"
-      ],
-      "sources": [
-        {
-          "type": "archive",
-          "url": "https://github.com/libsndfile/libsndfile/releases/download/1.1.0/libsndfile-1.1.0.tar.xz",
-          "sha256": "0f98e101c0f7c850a71225fb5feaf33b106227b3d331333ddc9bacee190bcf41"
-        }
-      ]
-    },
-    {
       "name": "portaudio",
       "buildsystem": "cmake-ninja",
       "cleanup": [
@@ -149,11 +134,6 @@
         "-DWANT_RUBBERBAND=ON",
         "-DWANT_LIBARCHIVE=ON"
       ],
-      "build-options": {
-        "env": [
-          "LADSPA_PATH=/app/extensions/ladspa:/app/lib/ladspa"
-        ]
-      },
       "post-install": [
         "install -d /app/extensions/Plugins"
       ],
