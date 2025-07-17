@@ -1,16 +1,61 @@
-commit a3518c69bd95b3ea5400e694f888febcd4ecf1d2
+commit 456c4b17f034497b5f6a3e630abfd1e236057633
 Author: Hubert Figuière <hub@figuiere.net>
-Date:   Sat Nov 9 19:20:42 2024 -0500
+Date:   Thu Jul 17 17:55:18 2025 -0400
 
-    AppStream: Added developer_name for validation
+    AppStream: Added developer_name for validation. Fixed spurious string
+    
+    Regenerate the translation and update the translated appstream file.
     
     Signed-off-by: Hubert Figuière <hub@figuiere.net>
 
 diff --git a/linux/org.hydrogenmusic.Hydrogen.metainfo.xml b/linux/org.hydrogenmusic.Hydrogen.metainfo.xml
-index 76fd68dbf..d412695e1 100644
+index ec2f7ed64..12f80c9be 100644
 --- a/linux/org.hydrogenmusic.Hydrogen.metainfo.xml
 +++ b/linux/org.hydrogenmusic.Hydrogen.metainfo.xml
-@@ -502,7 +502,7 @@
+@@ -63,9 +63,30 @@
+   <url type="faq">http://hydrogen-music.org/faq/</url>
+   <url type="help">http://hydrogen-music.org/documentation/manual/manual_en.html</url>
+   <url type="translate">https://github.com/hydrogen-music/hydrogen/wiki/Translator-instructions/</url>
+-  <url type="contact">http://lists.sourceforge.net/mailman/listinfo/hydrogen-devel/</url>
++  <url type="contact">https://lists.sourceforge.net/mailman/listinfo/hydrogen-devel/</url>
+ 
+   <releases>
++    <release version="1.2.5" date="2025-07-17">
++	<description>
++	  <p>This patch release introduces Qt6 support, deprecates LASH support, and fixes a number of bugs and inconsistencies found since version 1.2.4</p>
++	</description>
++	<url type="details">https://github.com/hydrogen-music/hydrogen/releases/tag/1.2.5</url>
++	<artifacts>
++	  <artifact type="binary" platform="x86_64-linux-gnu">
++		<location>https://github.com/hydrogen-music/hydrogen/releases/download/1.2.5/Hydrogen-1.2.5-x86_64.AppImage</location>
++		<checksum type="sha256">789d3114293180cb18c5a12b5aa7950e9746b627fcd8fd9a675be5d606fec8cc</checksum>
++	  </artifact>
++	  <artifact type="binary" platform="any-macos-gnu">
++		<location>https://github.com/hydrogen-music/hydrogen/releases/download/1.2.5/Hydrogen-1.2.5.dmg</location>
++		<checksum type="sha256">556759b691e5590d3803ba5c052a97102fd96a553d9f8a14d1e720f2e327dc80</checksum>
++	  </artifact>
++	  <artifact type="binary" platform="x86_64-windows-msvc">
++		<location>https://github.com/hydrogen-music/hydrogen/releases/download/1.2.5/Hydrogen-1.2.5-win64.exe</location>
++		<checksum type="sha256">78186f484af21921c2b84d7d0d4cbcbb9ca1ee41b43c21e02d2065e88779fa7f</checksum>
++	  </artifact>
++	</artifacts>
++    </release>
++
+     <release version="1.2.4" date="2024-12-07">
+ 	<description>
+ 	  <p>This patch release fixes a number of bugs and inconsistencies found since version 1.2.3</p>
+@@ -168,8 +189,8 @@
+ 
+   <release version="1.2.0" date="2023-04-07">
+ 	<description>
+-	  <p>New features</p>
+-	  <p xml:lang="de">Neue Funktionen</p>:
++	  <p>New features:</p>
++	  <p xml:lang="de">Neue Funktionen:</p>
+ 	  <ul>
+ 		<li>New scalable SVG-based GUI components with more standardized UX</li>
+ 		<li xml:lang="de">Skalierbare, SVG-basierte Benutzeroberfläche mit, deren Verhalten stärker etablierten Standards entspricht</li>
+@@ -524,7 +545,7 @@
    </supports>
  
    <content_rating type="oars-1.1"/>
@@ -20,10 +65,28 @@ index 76fd68dbf..d412695e1 100644
  
    <launchable type="desktop-id">org.hydrogenmusic.Hydrogen.desktop</launchable>
 diff --git a/linux/org.hydrogenmusic.Hydrogen.metainfo.xml.in b/linux/org.hydrogenmusic.Hydrogen.metainfo.xml.in
-index ff1d23f1e..86deec812 100644
+index 5921a5c0a..5a9eda200 100644
 --- a/linux/org.hydrogenmusic.Hydrogen.metainfo.xml.in
 +++ b/linux/org.hydrogenmusic.Hydrogen.metainfo.xml.in
-@@ -420,7 +420,7 @@
+@@ -51,7 +51,7 @@
+   <url type="faq">http://hydrogen-music.org/faq/</url>
+   <url type="help">http://hydrogen-music.org/documentation/manual/manual_en.html</url>
+   <url type="translate">https://github.com/hydrogen-music/hydrogen/wiki/Translator-instructions/</url>
+-  <url type="contact">http://lists.sourceforge.net/mailman/listinfo/hydrogen-devel/</url>
++  <url type="contact">https://lists.sourceforge.net/mailman/listinfo/hydrogen-devel/</url>
+ 
+   <releases>
+     <release version="1.2.5" date="2025-07-17">
+@@ -173,7 +173,7 @@
+ 
+   <release version="1.2.0" date="2023-04-07">
+ 	<description>
+-	  <p>New features</p>:
++	  <p>New features:</p>
+ 	  <ul>
+ 		<li>New scalable SVG-based GUI components with more standardized UX</li>
+ 		<li>Configurable colour themes and adjustable font size to increase accessibility</li>
+@@ -462,7 +462,7 @@
    </supports>
  
    <content_rating type="oars-1.1"></content_rating>
@@ -32,3 +95,908 @@ index ff1d23f1e..86deec812 100644
    <update_contact>hydrogen-devel@lists.sourceforge.net</update_contact>
  
    <launchable type="desktop-id">org.hydrogenmusic.Hydrogen.desktop</launchable>
+diff --git a/linux/po/appstream.pot b/linux/po/appstream.pot
+index 8fd8dada0..0d5246f21 100644
+--- a/linux/po/appstream.pot
++++ b/linux/po/appstream.pot
+@@ -1,7 +1,7 @@
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+-"POT-Creation-Date: 2024-12-07 14:19+0100\n"
++"POT-Creation-Date: 2025-07-17 17:55-0400\n"
+ "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+ "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+@@ -66,356 +66,366 @@ msgstr ""
+ 
+ #. (itstool) path: description/p
+ #: org.hydrogenmusic.Hydrogen.metainfo.xml.in:59
+-msgid "This patch release fixes a number of bugs and inconsistencies found since version 1.2.3"
++msgid "This patch release introduces Qt6 support, deprecates LASH support, and fixes a number of bugs and inconsistencies found since version 1.2.4"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+ #: org.hydrogenmusic.Hydrogen.metainfo.xml.in:80
++msgid "This patch release fixes a number of bugs and inconsistencies found since version 1.2.3"
++msgstr ""
++
++#. (itstool) path: description/p
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:101
+ msgid "This patch release introduces an AppImage build and fixes a number of bugs and inconsistencies found since version 1.2.2"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:105
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:126
+ msgid "This patch release introduces an AppImage build and fixes a number of bugs and inconsistencies found since version 1.2.1"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:130
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:151
+ msgid "This patch release fixes a number of bugs and inconsistencies found in version 1.2.0"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:155
+-msgid "New features"
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:176
++msgid "New features:"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:157
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:178
+ msgid "New scalable SVG-based GUI components with more standardized UX"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:158
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:179
+ msgid "Configurable colour themes and adjustable font size to increase accessibility"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:159
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:180
+ msgid "Pattern and Song editor can follow playback"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:160
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:181
+ msgid "Stacked mode and virtual patterns can show notes from other patterns alongside currently selecte pattern"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:161
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:182
+ msgid "Tagging improvements"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:162
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:183
+ msgid "New OSC commands"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:163
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:184
+ msgid "Builtin crash reporter"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:164
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:185
+ msgid "Slightly changed ADSR behaviour to align with natural user expectations"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:166
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:187
+ msgid "In addition there are many bug fixes, smaller tweaks to behaviour, and many under-the-hood improvements to audio processing structure, timekeeping and performance, as well as GUI speed."
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:196
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:217
+ msgid "This is a maintenance release which addresses issues affecting release 1.1.0 and earlier versions of Hydrogen, including"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:201
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:222
+ msgid "Preferences dialog 'OK' bug"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:202
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:223
+ msgid "Audio problems when using LADSPA plugins with PulseAudio"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:203
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:224
+ msgid "MIDI crashes and other issues on 64-bit Windows"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:204
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:225
+ msgid "Missing tags and markers"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:205
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:226
+ msgid "Inability to control audio latency on Windows (PortAudio)"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:231
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:252
+ msgid "New features in this release include:"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:233
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:254
+ msgid "Keyboard cursor-driven pattern, song and note properties editing"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:234
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:255
+ msgid "Note selection and movement in pattern editors"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:235
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:256
+ msgid "New OSC commands (new song, open song, save song (as), quit, toggle looped playback, toggle timeline, toggle Jack transport, toggle Jack timebase master, add/delete timeline marker, toggle song/pattern playback mode)"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:239
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:260
+ msgid "NSM support reworked"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:240
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:261
+ msgid "Deprecating JACK-session"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:241
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:262
+ msgid "Instrument main pitch shift offset"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:242
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:263
+ msgid "Custom pattern size support with representation in note values"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:243
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:264
+ msgid "Custom pan law support in mixer"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:244
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:265
+ msgid "Audio output device selection in CoreAudio (macOS) and PortAudio (Windows)"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:270
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:291
+ msgid "This release primarily addresses issues and bugs discovered by users, rather than adding new features."
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:275
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:296
+ msgid "User-selectable translation language"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:276
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:297
+ msgid "Fix critical startup bug on macOS Big Sur"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:277
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:298
+ msgid "Fix drumkit export failure on Windows"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:304
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:325
+ msgid "Fixed compilation with libtar"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:305
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:326
+ msgid "Fixed jack transport tempo drift when using non-integer bpm values"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:306
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:327
+ msgid "Disabled \"development mode\" warning"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:307
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:328
+ msgid "Fix crash on saving ladspa settings"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:308
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:329
+ msgid "Added manual + tutorial files to Windows and OS X Installers"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:334
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:355
+ msgid "It comes with the following new features:"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:336
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:357
+ msgid "QT5 support"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:337
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:358
+ msgid "MIDI feedback"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:338
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:359
+ msgid "OSC support (incl. feedback)"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:339
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:360
+ msgid "Playback track"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:340
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:361
+ msgid "Menu redesign"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:341
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:362
+ msgid "Note probability property"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:342
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:363
+ msgid "Velocity automation"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:343
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:364
+ msgid "Full screen mode"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:344
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:365
+ msgid "New default kit: GMRockKit"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:370
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:391
+ msgid "It includes the following new features:"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:372
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:393
+ msgid "The color of the SongEditors squares is now configurable"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:373
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:394
+ msgid "Added support for midi cymbal choking"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:374
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:395
+ msgid "Added support for midi hihat pressure control"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:375
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:396
+ msgid "Added hihat pressure groups"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:376
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:397
+ msgid "Added basic non session manager support"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:377
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:398
+ msgid "Added instrument components"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:378
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:399
+ msgid "Basic lilypond export"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:379
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:400
+ msgid "New windows cross compilation script"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:380
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:401
+ msgid "Support for soundlibrary images"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:381
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:402
+ msgid "Configurable sample selection algorithm"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:382
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:403
+ msgid "Support for soundlibraries with images"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:383
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:404
+ msgid "New midi action: SELECT_PREV_PATTERN_RELATIVE"
+ msgstr ""
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:397
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:418
+ msgid "Maintenance release. It includes a fixed version numbering for the included debian packaging scripts, a bugfix which supresses the addition of \"/\" characters in instrument names and two smaller fixes to the pattern handling."
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:416
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:437
+ msgid "new build system (cmake)"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:417
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:438
+ msgid "add undo for song/pattern editor"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:418
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:439
+ msgid "jack-session support"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:419
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:440
+ msgid "jack-midi support"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:420
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:441
+ msgid "several bug fixes"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:421
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:442
+ msgid "tabbed interface"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:422
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:443
+ msgid "several small changes to the GUI"
+ msgstr ""
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:423
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:444
+ msgid "improve ExportSong add use of TimeLineBPM, RubberbandBatch processor and different types of resample interpolation"
+ msgstr ""
+ 
++#. (itstool) path: component/developer_name
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:465
++msgid "Hydrogen Developers"
++msgstr ""
++
+diff --git a/linux/po/de.po b/linux/po/de.po
+index 00d4c7708..3d4b486c7 100644
+--- a/linux/po/de.po
++++ b/linux/po/de.po
+@@ -1,7 +1,7 @@
+ msgid ""
+ msgstr ""
+ "Project-Id-Version: PACKAGE VERSION\n"
+-"POT-Creation-Date: 2024-12-07 14:19+0100\n"
++"POT-Creation-Date: 2025-07-17 17:49-0400\n"
+ "PO-Revision-Date: 2023-07-10 19:20+0200\n"
+ "Last-Translator: Philipp Mueller <princess.trudildis@posteo.de>\n"
+ "Language-Team: LANGUAGE <LL@li.org>\n"
+@@ -67,355 +67,368 @@ msgstr "Automatisierbar über MIDI oder OSC API"
+ 
+ #. (itstool) path: description/p
+ #: org.hydrogenmusic.Hydrogen.metainfo.xml.in:59
++msgid "This patch release introduces Qt6 support, deprecates LASH support, and fixes a number of bugs and inconsistencies found since version 1.2.4"
++msgstr ""
++
++#. (itstool) path: description/p
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:80
+ msgid "This patch release fixes a number of bugs and inconsistencies found since version 1.2.3"
+ msgstr "Korrekturversion, die eine Reihe von Fehler und Ungereimtheiten seit der 1.2.3 behebt."
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:80
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:101
+ msgid "This patch release introduces an AppImage build and fixes a number of bugs and inconsistencies found since version 1.2.2"
+ msgstr "Korrekturversion, die ein AppImage beinhaltet und eine Reihe von Fehler und Ungereimtheiten seit der 1.2.2 behebt."
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:105
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:126
+ msgid "This patch release introduces an AppImage build and fixes a number of bugs and inconsistencies found since version 1.2.1"
+ msgstr "Korrekturversion, die ein AppImage beinhaltet und eine Reihe von Fehler und Ungereimtheiten seit der 1.2.1 behebt."
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:130
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:151
+ msgid "This patch release fixes a number of bugs and inconsistencies found in version 1.2.0"
+ msgstr "Korrekturversion, die eine Reihe Fehler und Ungereimtheiten der 1.2.0 Version behebt"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:155
+-msgid "New features"
+-msgstr "Neue Funktionen"
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:176
++msgid "New features:"
++msgstr "Neue Funktionen:"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:157
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:178
+ msgid "New scalable SVG-based GUI components with more standardized UX"
+ msgstr "Skalierbare, SVG-basierte Benutzeroberfläche mit, deren Verhalten stärker etablierten Standards entspricht"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:158
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:179
+ msgid "Configurable colour themes and adjustable font size to increase accessibility"
+ msgstr "Einstellbares Farbschema und anpassbare Schriftgrößen"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:159
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:180
+ msgid "Pattern and Song editor can follow playback"
+ msgstr "Pattern und Song Editor können der Wiedergabe Position folgen"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:160
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:181
+ msgid "Stacked mode and virtual patterns can show notes from other patterns alongside currently selecte pattern"
+ msgstr "Gestapelter Pattern Modus und virtuelle Pattern zeigen Noten andere aktiver Pattern an"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:161
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:182
+ msgid "Tagging improvements"
+ msgstr "Verbesserte Markierungen im Song Editor"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:162
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:183
+ msgid "New OSC commands"
+ msgstr "Neue OSC Kommandos"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:163
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:184
+ msgid "Builtin crash reporter"
+ msgstr "Eingebauter Absturz Reporter"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:164
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:185
+ msgid "Slightly changed ADSR behaviour to align with natural user expectations"
+ msgstr "Geringfügige Änderungen im ADSR Verhalten, um besser natürlichen Prinzipien zu entsprechen"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:166
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:187
+ msgid "In addition there are many bug fixes, smaller tweaks to behaviour, and many under-the-hood improvements to audio processing structure, timekeeping and performance, as well as GUI speed."
+ msgstr "Zusätzlich wurden viele Fehler behoben, kleine Verbesserungen im Verhalten sowie größere unter der Haube in der Audioverarbeitung und Effizienz gemacht"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:196
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:217
+ msgid "This is a maintenance release which addresses issues affecting release 1.1.0 and earlier versions of Hydrogen, including"
+ msgstr "Wartungsversion, welche Probleme sowohl der 1.1.0 Version als auch früherer behebt, wie"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:201
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:222
+ msgid "Preferences dialog 'OK' bug"
+ msgstr "Fehler des 'OK' Knopfs in den Einstellungen"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:202
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:223
+ msgid "Audio problems when using LADSPA plugins with PulseAudio"
+ msgstr "Audio Probleme in LADSPA Plug-Ins unter PulseAudio"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:203
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:224
+ msgid "MIDI crashes and other issues on 64-bit Windows"
+ msgstr "MIDI Abstürze und andere Probleme unter 64-bit Windows"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:204
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:225
+ msgid "Missing tags and markers"
+ msgstr "Fehlende Marker"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:205
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:226
+ msgid "Inability to control audio latency on Windows (PortAudio)"
+ msgstr "Fehlende Kontrolle über Latenz unter PortAudio in Windows"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:231
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:252
+ msgid "New features in this release include:"
+ msgstr "Neue Funktionen:"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:233
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:254
+ msgid "Keyboard cursor-driven pattern, song and note properties editing"
+ msgstr "Tastatur-gestütztes Editieren von Pattern, Liedern und Noteneigenschaften"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:234
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:255
+ msgid "Note selection and movement in pattern editors"
+ msgstr "Auswählen und Verschieben von Noten im Pattern Editor"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:235
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:256
+ msgid "New OSC commands (new song, open song, save song (as), quit, toggle looped playback, toggle timeline, toggle Jack transport, toggle Jack timebase master, add/delete timeline marker, toggle song/pattern playback mode)"
+ msgstr "Neue OSC Kommandos"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:239
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:260
+ msgid "NSM support reworked"
+ msgstr "Überarbeitete NSM Unterstützung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:240
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:261
+ msgid "Deprecating JACK-session"
+ msgstr "Abkündigung von JACK-session"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:241
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:262
+ msgid "Instrument main pitch shift offset"
+ msgstr "Generelle Tonhöhenverschiebung von Instrumenten"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:242
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:263
+ msgid "Custom pattern size support with representation in note values"
+ msgstr "Patternlänge wird als Notenwertverhältnis präsentiert"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:243
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:264
+ msgid "Custom pan law support in mixer"
+ msgstr "Verschiedene Pan Funktionen im Mixer"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:244
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:265
+ msgid "Audio output device selection in CoreAudio (macOS) and PortAudio (Windows)"
+ msgstr "Auswahl des Ausgabegeräts unter CoreAudio (macOS) und PortAudio (Windows)"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:270
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:291
+ msgid "This release primarily addresses issues and bugs discovered by users, rather than adding new features."
+ msgstr "Diese Version beinhaltet in erster Linie Fehlerbehebungen."
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:275
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:296
+ msgid "User-selectable translation language"
+ msgstr "Benutzerdefinierte Übersetzung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:276
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:297
+ msgid "Fix critical startup bug on macOS Big Sur"
+ msgstr "Kritischer Startfehler unter macOS Big Sur behoben"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:277
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:298
+ msgid "Fix drumkit export failure on Windows"
+ msgstr "Fehler im Schlagzeugexport unter Windows behoben"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:304
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:325
+ msgid "Fixed compilation with libtar"
+ msgstr "Fehler im Bauen mit libtar behoben"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:305
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:326
+ msgid "Fixed jack transport tempo drift when using non-integer bpm values"
+ msgstr "Abdriften der Wiedergabegeschwindigkeit unter JACK bei Fließkomma Geschwindigkeiten behoben"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:306
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:327
+ msgid "Disabled \"development mode\" warning"
+ msgstr "\"Entwicklungsmodus\" Warnung deaktiviert"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:307
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:328
+ msgid "Fix crash on saving ladspa settings"
+ msgstr "Absturz beim Speichern der LADSPA Einstellungen behoben"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:308
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:329
+ msgid "Added manual + tutorial files to Windows and OS X Installers"
+ msgstr "Documentation und Tutorials zu Windows und OS X Installer hinzugefügt"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:334
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:355
+ msgid "It comes with the following new features:"
+ msgstr "Beinhaltet folgende neue Funktionen:"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:336
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:357
+ msgid "QT5 support"
+ msgstr "QT5 Unterstützung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:337
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:358
+ msgid "MIDI feedback"
+ msgstr "MIDI Feedback"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:338
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:359
+ msgid "OSC support (incl. feedback)"
+ msgstr "OSC Unterstützung (inkl. Feeback)"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:339
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:360
+ msgid "Playback track"
+ msgstr "Playback Spur"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:340
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:361
+ msgid "Menu redesign"
+ msgstr "Menü Überarbeitung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:341
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:362
+ msgid "Note probability property"
+ msgstr "Wahrscheinlichkeit als Noten Eigenschaft"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:342
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:363
+ msgid "Velocity automation"
+ msgstr "Anschlagsautomatisierung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:343
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:364
+ msgid "Full screen mode"
+ msgstr "Vollbildmodus"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:344
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:365
+ msgid "New default kit: GMRockKit"
+ msgstr "Neues Standardschlagzeug: GMRockKit"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:370
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:391
+ msgid "It includes the following new features:"
+ msgstr "Neue Funktionen:"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:372
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:393
+ msgid "The color of the SongEditors squares is now configurable"
+ msgstr "Konfigurierbare Farbe für die Kästchen des Song Editors"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:373
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:394
+ msgid "Added support for midi cymbal choking"
+ msgstr "Unterstützung des Stoppens von Becken über MIDI"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:374
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:395
+ msgid "Added support for midi hihat pressure control"
+ msgstr "Unterstützung von Druckkontrolle der Hihat über MIDI"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:375
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:396
+ msgid "Added hihat pressure groups"
+ msgstr "Unterstützung von Druckkontrolle der Hihat"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:376
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:397
+ msgid "Added basic non session manager support"
+ msgstr "Grundlegende NSM Unterstützung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:377
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:398
+ msgid "Added instrument components"
+ msgstr "Integration von Instrumentkomponenten"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:378
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:399
+ msgid "Basic lilypond export"
+ msgstr "Grundlegender LilyPond Export"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:379
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:400
+ msgid "New windows cross compilation script"
+ msgstr "Neues Skript zum Crosskompilieren auf Windows"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:380
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:401
+ msgid "Support for soundlibrary images"
+ msgstr "Unterstützung von Bildern in Schlagzeugender"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:381
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:402
+ msgid "Configurable sample selection algorithm"
+ msgstr "Konfigurierbarer Algorithmus für die Sampleauswahl"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:382
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:403
+ msgid "Support for soundlibraries with images"
+ msgstr "Unterstützung von Bildern in Schlagzeugender"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:383
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:404
+ msgid "New midi action: SELECT_PREV_PATTERN_RELATIVE"
+ msgstr "Neues MIDI Kommando: SELECT_PREV_PATTERN_RELATIVE"
+ 
+ #. (itstool) path: description/p
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:397
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:418
+ msgid "Maintenance release. It includes a fixed version numbering for the included debian packaging scripts, a bugfix which supresses the addition of \"/\" characters in instrument names and two smaller fixes to the pattern handling."
+ msgstr "Wartungsversion, welches Korrekturen in der Versionierung für die Integration in Debian Paketierungsskripts, sowie Fehlerbehebungen durch zusätzliche \"/\" Zeichen in Instrumentnamen behebt."
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:416
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:437
+ msgid "new build system (cmake)"
+ msgstr "Neues Buildsystem (cmake)"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:417
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:438
+ msgid "add undo for song/pattern editor"
+ msgstr "Rückgäng machen in Pattern und Song Editor"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:418
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:439
+ msgid "jack-session support"
+ msgstr "Unterstützung von JACK-session"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:419
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:440
+ msgid "jack-midi support"
+ msgstr "JACK-MIDI Unterstützung"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:420
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:441
+ msgid "several bug fixes"
+ msgstr "Einige Fehlerbehebungen"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:421
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:442
+ msgid "tabbed interface"
+ msgstr "Tab Oberfläche"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:422
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:443
+ msgid "several small changes to the GUI"
+ msgstr "Einige kleine Änderungen in der Benutzeroberfläche"
+ 
+ #. (itstool) path: ul/li
+-#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:423
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:444
+ msgid "improve ExportSong add use of TimeLineBPM, RubberbandBatch processor and different types of resample interpolation"
+ msgstr "Verbesserter Liedexport mit Tempomarkierungen der Timeline, einem Rubberband Prozessor und verschiedenen Arten der Interpolation"
++
++#. (itstool) path: component/developer_name
++#: org.hydrogenmusic.Hydrogen.metainfo.xml.in:465
++msgid "Hydrogen Developers"
++msgstr ""
++
++#~ msgid "New features"
++#~ msgstr "Neue Funktionen"
