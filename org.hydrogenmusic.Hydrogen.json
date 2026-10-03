@@ -31,8 +31,11 @@
     "/include",
     "/man",
     "/share/man",
+    "/lib/cmake",
     "/lib/pkgconfig",
-    "*.la"
+    "/share/lash",
+    "*.la",
+    "*.a"
   ],
   "modules": [
     "shared-modules/linux-audio/lrdf.json",
@@ -44,7 +47,6 @@
           "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
       ],
       "cleanup": [
-        "/lib/cmake",
         "/share/doc"
       ],
       "sources": [
@@ -59,13 +61,6 @@
     {
       "name": "portmidi",
       "buildsystem": "cmake-ninja",
-      "cleanup": [
-        "/lib/cmake",
-        "/lib/pkgconfig",
-        "/include",
-        "*.a",
-        "*.la"
-      ],
       "sources": [
         {
           "type": "git",
@@ -86,14 +81,8 @@
           "sha256": "dcc96ae894795822398789f251c2c7effa602fc60e9dd6c7a5c5d2e7a513526c"
         }
       ],
-      "post-install": [
-        "install -Dm644 -t /app/share/licenses/vamp-plugin-sdk COPYING"
-      ],
       "cleanup": [
-        "/bin",
-        "/include",
-        "/lib/pkgconfig",
-        "*.a"
+        "/bin"
       ]
     },
     {
@@ -111,12 +100,8 @@
           "sha256": "ff0c63b0b5ce41f937a8a3bc560f27918c5fe0b90c6bc1cb70829b86ada82b75"
         }
       ],
-      "post-install": [
-        "install -Dm644 -t /app/share/licenses/rubberband COPYING"
-      ],
       "cleanup": [
-        "/share/ladspa",
-        "*.a"
+        "/share/ladspa"
       ]
     },
     {
@@ -144,8 +129,8 @@
         {
           "type": "git",
           "url": "https://github.com/hydrogen-music/hydrogen.git",
-          "tag": "1.2.6",
-          "commit": "be87f2decf36f0c86586801cc05c0482a8af9dd1"
+          "tag": "1.2.7",
+          "commit": "712c25f5bd42942edcb927cd3668f21991efbee2"
         },
         {
           "type": "patch",
